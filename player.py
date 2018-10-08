@@ -116,7 +116,7 @@ class Player:
                     return self.getMyCoinStack()/3
 
                 else:
-                    if game_state["current_buy_in"] < 100:
+                    if game_state["current_buy_in"] > 100:
                         return 0
                     else:
                         10
