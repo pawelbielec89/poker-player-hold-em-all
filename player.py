@@ -56,9 +56,9 @@ class Player:
             if weHavePoker:
                 return self.getMyCoinStack()
             if (pair == True) or (whole_pair == True):
-                return self.getMyCoinStack()/2
+                return self.getMyCoinStack()/2 -1
             else:
-                return 10
+                return 0
 
         except Exception as e:
             traceback.print_exc()
