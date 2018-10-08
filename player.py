@@ -21,6 +21,32 @@ class Player:
     def getMyCoinStack(self): # RETURNS MY COINS IN INT
         return self.getPlayer("Hold Em All")["stack"]
 
+    def checkColors(self, mycards, communitycards):
+        cards = mycards + communitycards
+        hearts = 0
+        spades = 0
+        clubs = 0
+        diamonds = 0
+        colors = [hearts, spades, clubs, diamonds]
+        for card in cards:
+            if card["suit"] == "hearts":
+                hearts += 1
+            elif card["suit"] == "spades":
+                spades += 1
+            elif card["suit"] == "clubs":
+                clubs += 1
+            elif card["suit"] == "diamonds":
+                diamonds += 1
+
+        for color in colors:
+            if color >= 4:
+                return self.getMyCoinStack(self)
+            elif color == 3:
+                return self.getMyCoinStack(self) / 2
+            elif color == 2:
+                return self.getMyCoinStack() / 5
+        return 10
+
     def betRequest(self, game_state):
         self.game_state = game_state
         try:
@@ -32,6 +58,7 @@ class Player:
         except Exception as e:
             traceback.print_exc()
             return 1000
+
 
     def showdown(self, game_state):
         pass
