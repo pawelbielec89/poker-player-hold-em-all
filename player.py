@@ -2,9 +2,6 @@
 class Player:
     VERSION = "Default Python folding player"
 
-    def panicMode(self): #DEFAULT GAME MODE
-        return 1000
-
     def getPlayersList(game_state): # RETURNS PLAYERS IN LIST
         return game_state["players"]
 
@@ -32,7 +29,7 @@ class Player:
                 return Player.getMyCoinStack(game_state)/2
             return Player.getMyCoinStack(game_state)/6
         except Exception:
-            return Player.panicMode()
+            return 1000
 
     def showdown(self, game_state):
         pass
