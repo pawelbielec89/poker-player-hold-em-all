@@ -105,15 +105,19 @@ class Player:
                 print("not working")
             communitycards = self.getCommunityCards()
             myScore = self.checkScore(mycards, communitycards)
-            noDemocracyScore = self.checkScore(noDemocracyCards, communitycards)
-            probablyJSScore = self.checkScore(probablyJSCards, communitycards)
-
+            try:
+                noDemocracyScore = self.checkScore(noDemocracyCards, communitycards)
+                probablyJSScore = self.checkScore(probablyJSCards, communitycards)
+            except Exception as ex:
+                print("nw")
             if (len(communitycards) == 0):
                 if self.checkForPairInHand(mycards):
                     return self.getMyCoinStack() / 2
-
-            if myScore > noDemocracyScore and myScore > probablyJSScore:
-                return self.getMyCoinStack()
+            try:
+                if myScore > noDemocracyScore and myScore > probablyJSScore:
+                    return self.getMyCoinStack()
+            except Exception as ex:
+                print("nw")
 
             else:
                 return 10
