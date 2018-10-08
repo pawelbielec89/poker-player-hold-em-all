@@ -2,9 +2,6 @@
 class Player:
     VERSION = "Default Python folding player"
 
-    def panicMode(self): #DEFAULT GAME MODE
-        return 1000
-
     def getPlayersList(game_state): # RETURNS PLAYERS IN LIST
         return game_state["players"]
 
