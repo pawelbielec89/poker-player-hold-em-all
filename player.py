@@ -13,7 +13,7 @@ class Player:
                 return player
 
     def getCardsFromPlayer(self, player): # RETURNS CARDS IN LIST
-        return player["hold_cards"]
+        return player["hole_cards"]
 
     def getCommunityCards(self): # RETURNS COMMUNITY CARDS
         return self.game_state["community_cards"]
