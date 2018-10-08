@@ -62,7 +62,7 @@ class Player:
 
         except Exception as e:
             traceback.print_exc()
-            return 333
+            return self.getMyCoinStack()-1
                 
     def showdown(self, game_state):
         pass
