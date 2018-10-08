@@ -26,9 +26,11 @@ class Player:
         try:
             me = self.getPlayer("Hold Em All")
             mycards = self.getCardsFromPlayer(me)
-            bet = self.checkForPairInHand(mycards)
-            
-            if bet == True:
+            communitycards = self.getCommunityCards()
+            pair = self.checkForPairInHand(mycards)
+            whole_pair = self.checkForPairInHandAndCommunity(mycards, communitycards)
+
+            if (pair == True) or (whole_pair == True):
                 return self.getMyCoinStack()/2
             else:
                 return 10
@@ -41,5 +43,13 @@ class Player:
         if mycards[0]["rank"] == mycards[1]["rank"]:
             return True
 
+    def checkForPairInHandAndCommunity(self, mycards, communitycards):
+        if communitycards.length == 0:
+            return False
+        for card in mycards:
+            for communitycard in communitycards:
+                if card["rank"] == communitycard["rank"]:
+                    return True
+                
     def showdown(self, game_state):
         pass
