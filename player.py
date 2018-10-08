@@ -1,36 +1,37 @@
+import traceback
 
 class Player:
     VERSION = "Default Python folding player"
 
-    def getPlayersList(game_state): # RETURNS PLAYERS IN LIST
-        return game_state["players"]
+    def getPlayersList(self): # RETURNS PLAYERS IN LIST
+        return self.game_state["players"]
 
-    def getPlayer(name, game_state): # RETURNS PLAYER AS DICT
-        players_list = Player.getPlayersList(game_state)
+    def getPlayer(self, player_name): # RETURNS PLAYER AS DICT
+        players_list = self.getPlayersList()
         for player in players_list:
-            if name == player["name"]:
+            if player_name == player["name"]:
                 return player
 
-    def getCardsFromPlayer(player): # RETURNS CARDS IN LIST
+    def getCardsFromPlayer(self, player): # RETURNS CARDS IN LIST
         return player["hole_cards"]
 
-    def getCommunityCards(game_state): # RETURNS COMMUNITY CARDS
-        return game_state["community_cards"]
+    def getCommunityCards(self): # RETURNS COMMUNITY CARDS
+        return self.game_state["community_cards"]
 
-    def getMyCoinStack(game_state): # RETURNS MY COINS IN INT
-        return Player.getPlayer("Hold Em All", game_state)["stack"]
+    def getMyCoinStack(self): # RETURNS MY COINS IN INT
+        return self.getPlayer("Hold Em All")["stack"]
 
     def betRequest(self, game_state):
+        self.game_state = game_state
         try:
-            me = Player.getPlayer("Hold Em All", game_state)
-            mycards = Player.getCardsFromPlayer(me)
-
+            me = self.getPlayer("Hold Em All")
+            mycards = self.getCardsFromPlayer(me)
             if mycards[0]["rank"] == mycards[1]["rank"]:
-                return Player.getMyCoinStack(game_state)/2
-            return Player.getMyCoinStack(game_state)/6
-        except Exception:
+                return self.getMyCoinStack()/2
+            return self.getMyCoinStack()/6
+        except Exception as e:
+            traceback.print_exc()
             return 1000
 
     def showdown(self, game_state):
         pass
-
