@@ -42,10 +42,6 @@ class Player:
             return True
         else: return False
 
-    # def checkForHighCard(self, cards, communitycards):
-    #     player_and_community_cards = self.getSevenCardsRanks(cards, communitycards)
-    #     if
-
     def checkForFiveColours(self, cards, communitycards):
         player_and_community_cards = self.getSevenCardsColours(cards, communitycards)
         red = 0
@@ -120,7 +116,7 @@ class Player:
                     return self.getMyCoinStack()/3
 
                 else:
-                    return 10
+                    return 0
 
         except Exception as e:
             return self.game_state["minimum_raise"]
