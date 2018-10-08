@@ -41,11 +41,12 @@ class Player:
         else: return False
 
     def checkForFiveColours(self, cards, communitycards):
-        player_and_community_cards = self.getSevenCardsRanks(cards, communitycards)
+        player_and_community_cards = self.getSevenCardsColours(cards, communitycards)
         red = 0
         black = 0
         for card in player_and_community_cards:
-            if card["suit"] == "spades" or card["suit"] == "clubs":
+            print(card)
+            if card == "spades" or card == "clubs":
                 black += 1
             else:
                 red +=1
@@ -57,7 +58,7 @@ class Player:
         player_and_community_cards = self.getSevenCardsRanks(cards, communitycards)
         allCards = {}
         for card in player_and_community_cards:
-            allCards[card["rank"]] = 'value'
+            allCards[card] = 'value'
         if len(allCards) < 2:
             return False
         else:
@@ -71,6 +72,13 @@ class Player:
             player_and_community_cards += card["rank"]
         return player_and_community_cards
 
+    def getSevenCardsColours(self, cards, communitycards):
+        player_and_community_cards = []
+        for card in cards:
+            player_and_community_cards.append(card["suit"])
+        for card in communitycards:
+            player_and_community_cards.append(card["suit"])
+        return player_and_community_cards
 
     def checkScore(self, cards, communitycards):
         if self.checkForPoker(cards,communitycards):
@@ -90,8 +98,11 @@ class Player:
             noDemocracy = self.getPlayer("NO democracy")
             probablyJS = self.getPlayer("Probably JS")
             mycards = self.getCardsFromPlayer(me)
-            noDemocracyCards = self.getCardsFromPlayer(noDemocracy)
-            probablyJSCards = self.getCardsFromPlayer(probablyJS)
+            try:
+                noDemocracyCards = self.getCardsFromPlayer(noDemocracy)
+                probablyJSCards = self.getCardsFromPlayer(probablyJS)
+            except Exception as ex:
+                print("not working")
             communitycards = self.getCommunityCards()
             myScore = self.checkScore(mycards, communitycards)
             noDemocracyScore = self.checkScore(noDemocracyCards, communitycards)
@@ -110,6 +121,6 @@ class Player:
         except Exception as e:
             traceback.print_exc()
             return 333
-                
+
     def showdown(self, game_state):
         pass
