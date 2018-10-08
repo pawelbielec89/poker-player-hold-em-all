@@ -13,7 +13,7 @@ class Player:
                 return player
 
     def getCardsFromPlayer(self, player): # RETURNS CARDS IN LIST
-        return player["hole_cards"]
+        return player["hold_cards"]
 
     def getCommunityCards(self): # RETURNS COMMUNITY CARDS
         return self.game_state["community_cards"]
@@ -71,6 +71,8 @@ class Player:
             player_and_community_cards += card["rank"]
         return player_and_community_cards
 
+    def
+
     def checkScore(self, cards, communitycards):
         if self.checkForPoker(cards,communitycards):
             return 9
@@ -99,6 +101,7 @@ class Player:
             if (len(communitycards) == 0):
                 if self.checkForPairInHand(mycards):
                     return self.getMyCoinStack() / 2
+
             if myScore > noDemocracyScore and myScore > probablyJSScore:
                 return self.getMyCoinStack()
 
