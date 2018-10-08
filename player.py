@@ -26,15 +26,20 @@ class Player:
         try:
             me = self.getPlayer("Hold Em All")
             mycards = self.getCardsFromPlayer(me)
-            self.checkForPairInHand(mycards)
-            return self.getMyCoinStack()/6
+            bet = self.checkForPairInHand(mycards)
+            
+            if bet == True:
+                return self.getMyCoinStack()/2
+            else:
+                return 10
+
         except Exception as e:
             traceback.print_exc()
             return 1000
 
     def checkForPairInHand(self, mycards):
         if mycards[0]["rank"] == mycards[1]["rank"]:
-            return self.getMyCoinStack() / 2
+            return True
 
     def showdown(self, game_state):
         pass
