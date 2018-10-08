@@ -22,12 +22,13 @@ class Player:
 
     def betRequest(self, game_state):
         try:
-            me = self.getPlayer("Hold Em All", game_state)
-            mycards = self.getCardsFromPlayer(me)
-
-            if mycards[0]["rank"] == mycards[1]["rank"]:
-                return self.getMyCoinStack(game_state)/2
+            my_cards = game_state["players"][0]["hole_cards"]
+            if my_cards[0]["rank"] == my_cards[1]["rank"]:
+                return 200
+            elif my_cards[0]["suits"] == my_cards[1]["suits"]:
+                return  100
             return self.getMyCoinStack(game_state)/6
+
         except Exception:
             return 1000
 
