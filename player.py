@@ -111,7 +111,7 @@ class Player:
                     return 0
             else:
                 if self.checkForPairInHand(mycards):
-                    return self.getMyCoinStack() / 3
+                    return self.game_state["minimum_raise"]
 
                 else:
                     return 10
