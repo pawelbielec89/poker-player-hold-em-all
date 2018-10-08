@@ -98,29 +98,23 @@ class Player:
             noDemocracy = self.getPlayer("NO democracy")
             probablyJS = self.getPlayer("Probably JS")
             mycards = self.getCardsFromPlayer(me)
-            try:
+            communitycards = self.getCommunityCards()
+            if len(communitycards) > 1:
                 noDemocracyCards = self.getCardsFromPlayer(noDemocracy)
                 probablyJSCards = self.getCardsFromPlayer(probablyJS)
-            except Exception as ex:
-                print("not working")
-            communitycards = self.getCommunityCards()
-            myScore = self.checkScore(mycards, communitycards)
-            try:
+                myScore = self.checkScore(mycards, communitycards)
                 noDemocracyScore = self.checkScore(noDemocracyCards, communitycards)
                 probablyJSScore = self.checkScore(probablyJSCards, communitycards)
-            except Exception as ex:
-                print("nw")
-            if (len(communitycards) == 0):
-                if self.checkForPairInHand(mycards):
-                    return self.getMyCoinStack() / 2
-            try:
                 if myScore > noDemocracyScore and myScore > probablyJSScore:
                     return self.getMyCoinStack()
-            except Exception as ex:
-                print("nw")
-
+                else:
+                    return 10
             else:
-                return 333
+                if self.checkForPairInHand(mycards):
+                    return self.getMyCoinStack() / 2
+
+                else:
+                    return 10
 
         except Exception as e:
             return 333
