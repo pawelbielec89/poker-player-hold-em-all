@@ -31,7 +31,7 @@ class Player:
             return self.getMyCoinStack()/6
         except Exception as e:
             traceback.print_exc()
-            return 1000
+            return 500
 
     def showdown(self, game_state):
         pass
