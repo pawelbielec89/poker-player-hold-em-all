@@ -59,14 +59,14 @@ class Player:
                 return self.getMyCoinStack()/1.2 -1
             else:
                 if(self.getMyCoinStack() >500):
-                    return 10
+                    return game_state["minimum_raise"]
                 else:
                     return 0
 
 
         except Exception as e:
             traceback.print_exc()
-            return self.getMyCoinStack()-500
+            return game_state["minimum_raise"]
                 
     def showdown(self, game_state):
         pass
