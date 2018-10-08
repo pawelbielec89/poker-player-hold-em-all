@@ -114,7 +114,7 @@ class Player:
                     return self.getMyCoinStack() / 3
 
                 else:
-                    return 0
+                    return 10
 
         except Exception as e:
             return self.game_state["minimum_raise"]
