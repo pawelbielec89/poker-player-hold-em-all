@@ -52,7 +52,9 @@ class Player:
             communitycards = self.getCommunityCards()
             pair = self.checkForPairInHand(mycards)
             whole_pair = self.checkForPairInHandAndCommunity(mycards, communitycards)
-
+            weHavePoker = self.checkForPoker(mycards,communitycards)
+            if weHavePoker:
+                return self.getMyCoinStack()
             if (pair == True) or (whole_pair == True):
                 return self.getMyCoinStack()/2
             else:
