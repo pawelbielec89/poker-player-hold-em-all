@@ -6,7 +6,7 @@ class Player:
         return 1000
 
     def betRequest(self, game_state):
-        return self.panicMode(self)
+        return 1000
 
     def showdown(self, game_state):
         pass
