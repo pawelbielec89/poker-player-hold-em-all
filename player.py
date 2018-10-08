@@ -21,6 +21,19 @@ class Player:
     def getMyCoinStack(self): # RETURNS MY COINS IN INT
         return self.getPlayer("Hold Em All")["stack"]
 
+
+    def checkForPairInHand(self, mycards):
+        if mycards[0]["rank"] == mycards[1]["rank"]:
+            return True
+
+    def checkForPairInHandAndCommunity(self, mycards, communitycards):
+        if communitycards.length == 0:
+            return False
+        for card in mycards:
+            for communitycard in communitycards:
+                if card["rank"] == communitycard["rank"]:
+                    return True
+
     def betRequest(self, game_state):
         self.game_state = game_state
         try:
@@ -38,18 +51,6 @@ class Player:
         except Exception as e:
             traceback.print_exc()
             return 1000
-
-    def checkForPairInHand(self, mycards):
-        if mycards[0]["rank"] == mycards[1]["rank"]:
-            return True
-
-    def checkForPairInHandAndCommunity(self, mycards, communitycards):
-        if communitycards.length == 0:
-            return False
-        for card in mycards:
-            for communitycard in communitycards:
-                if card["rank"] == communitycard["rank"]:
-                    return True
                 
     def showdown(self, game_state):
         pass
