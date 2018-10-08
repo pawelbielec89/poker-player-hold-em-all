@@ -99,7 +99,7 @@ class Player:
             probablyJS = self.getPlayer("Probably JS")
             mycards = self.getCardsFromPlayer(me)
             communitycards = self.getCommunityCards()
-            if len(communitycards) > 1:
+            if len(communitycards) > 0:
                 noDemocracyCards = self.getCardsFromPlayer(noDemocracy)
                 probablyJSCards = self.getCardsFromPlayer(probablyJS)
                 myScore = self.checkScore(mycards, communitycards)
@@ -108,16 +108,16 @@ class Player:
                 if myScore > noDemocracyScore and myScore > probablyJSScore:
                     return self.getMyCoinStack()
                 else:
-                    return 10
+                    return 0
             else:
                 if self.checkForPairInHand(mycards):
                     return self.getMyCoinStack() / 2
 
                 else:
-                    return 10
+                    return 0
 
         except Exception as e:
-            return 333
+            return self.game_state["minimum_raise"]
 
     def showdown(self, game_state):
         pass
