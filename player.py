@@ -58,11 +58,15 @@ class Player:
             if (pair == True) or (whole_pair == True):
                 return self.getMyCoinStack()/2 -1
             else:
-                return self.getMyCoinStack() - (self.getMyCoinStack() -10)
+                if(self.getMyCoinStack() >500):
+                    return 10
+                else:
+                    return 0
+
 
         except Exception as e:
             traceback.print_exc()
-            return self.getMyCoinStack()-1
+            return self.getMyCoinStack()-500
                 
     def showdown(self, game_state):
         pass
