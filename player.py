@@ -111,7 +111,7 @@ class Player:
                     return 0
             else:
                 if self.checkForPairInHand(mycards):
-                    return self.getMyCoinStack() / 2
+                    return self.getMyCoinStack() / 3
 
                 else:
                     return 0
