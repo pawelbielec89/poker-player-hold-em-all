@@ -25,6 +25,8 @@ class Player:
     def checkForPairInHand(self, mycards):
         if mycards[0]["rank"] == mycards[1]["rank"]:
             return True
+        else:
+            return False
 
     def checkForPairInHandAndCommunity(self, cards, communitycards):
         if len(communitycards) == 0:
