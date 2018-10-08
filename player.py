@@ -71,7 +71,6 @@ class Player:
             player_and_community_cards += card["rank"]
         return player_and_community_cards
 
-    def
 
     def checkScore(self, cards, communitycards):
         if self.checkForPoker(cards,communitycards):
