@@ -58,10 +58,7 @@ class Player:
             if (pair == True) or (whole_pair == True):
                 return self.getMyCoinStack()/1.2 -1
             else:
-                if(self.getMyCoinStack() >500):
                     return game_state["minimum_raise"]
-                else:
-                    return 0
 
 
         except Exception as e:
