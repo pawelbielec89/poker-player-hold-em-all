@@ -116,7 +116,10 @@ class Player:
                     return self.getMyCoinStack()/3
 
                 else:
-                    return 0
+                    if game_state["current_buy_in"] < 100:
+                        return 0
+                    else:
+                        10
 
         except Exception as e:
             return self.game_state["minimum_raise"]
