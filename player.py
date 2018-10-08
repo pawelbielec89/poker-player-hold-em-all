@@ -27,7 +27,7 @@ class Player:
             return True
 
     def checkForPairInHandAndCommunity(self, cards, communitycards):
-        if communitycards.length == 0:
+        if len(communitycards) == 0:
             return False
         for card in cards:
             for communitycard in communitycards:
@@ -43,7 +43,7 @@ class Player:
         if "A" in player_and_community_cards and "K" in player_and_community_cards and "Q" in player_and_community_cards and "J" in player_and_community_cards and "10" in player_and_community_cards:
             return True
         else: return False
-        
+
     def betRequest(self, game_state):
         self.game_state = game_state
         try:
