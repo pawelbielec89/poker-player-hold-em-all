@@ -42,6 +42,10 @@ class Player:
             return True
         else: return False
 
+    def checkForHighCard(self, cards, communitycards):
+        player_and_community_cards = self.getSevenCardsRanks(cards, communitycards)
+        if
+
     def checkForFiveColours(self, cards, communitycards):
         player_and_community_cards = self.getSevenCardsColours(cards, communitycards)
         red = 0
@@ -113,7 +117,7 @@ class Player:
                     return 0
             else:
                 if self.checkForPairInHand(mycards):
-                    return self.game_state["minimum_raise"]
+                    return self.game_state["minimum_raise"] * 5
 
                 else:
                     return 10
