@@ -56,7 +56,7 @@ class Player:
             if weHavePoker:
                 return self.getMyCoinStack()
             if (pair == True) or (whole_pair == True):
-                return self.getMyCoinStack()/2 -1
+                return self.getMyCoinStack()/5 -1
             else:
                 if(self.getMyCoinStack() >500):
                     return 10
